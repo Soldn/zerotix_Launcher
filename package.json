@@ -1,0 +1,94 @@
+{
+  "name": "zerotix-launcher",
+  "version": "2.1.14",
+  "description": "Minecraft-лаунчер. Быстрый. Индивидуальный. Твой",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "verify": "node ./verifyTranslations.js",
+    "dev": "cross-env LAUNCHER_IN_DEV=yes electron .",
+    "build-win": "electron-builder build --win --publish never",
+    "build-linux": "electron-builder build --linux --publish never",
+    "test": "cross-env LAUNCHER_IN_DEV=yes LAUNCHER_IN_TEST=yes electron ."
+  },
+  "author": "Seeroy",
+  "license": "GPL-3.0",
+  "homepage": "https://zerotix.fun/",
+  "bugs": "https://github.com/Soldn/zerotix_Launcher",
+  "repository": "https://github.com/Soldn/zerotix_Launcher",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-reloader": "^1.2.3"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "compressing": "^1.10.1",
+    "console-stamp": "^3.1.2",
+    "ejs-electron": "^3.0.0",
+    "electron-updater": "^6.3.9",
+    "fs-extra": "^11.3.0",
+    "gamedig": "^5.2.0",
+    "jimp": "^0.22.12",
+    "jquery": "^3.7.1",
+    "machine-uuid": "^1.2.0",
+    "mcnbt": "^2.0.3",
+    "minecraft-launcher-core": "^3.18.2",
+    "msmc": "^5.0.5",
+    "open": "^8.4.2",
+    "request": "^2.88.2",
+    "tomate-loaders": "^2.0.2",
+    "toml": "^3.0.0",
+    "tree-kill": "^1.2.2"
+  },
+  "build": {
+    "productName": "ZeroTix.Launcher",
+    "appId": "com.zerotix.launcher",
+    "copyright": "© 2026 Seeroy",
+    "directories": {
+      "buildResources": "resources"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "tar.gz"
+      ],
+      "maintainer": "Seeroy",
+      "vendor": "Seeroy",
+      "icon": "web/assets/icon.png"
+    },
+    "win": {
+      "asar": true,
+      "target": "nsis",
+      "icon": "resources/icon.png"
+    },
+    "publish": {
+      "provider": "github",
+	  "owner": "https://github.com/Soldn/",
+      "repo": "https://github.com/Soldn/zerotix_Launcher"
+    },
+    "nsis": {
+      "installerIcon": "resources/icon.ico",
+      "installerHeaderIcon": "resources/icon.ico",
+      "deleteAppDataOnUninstall": false,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "**/*",
+      "node_modules/**/*",
+      "!logs{/*}",
+      "!logs/",
+      "!logs",
+      "!cache{/*}",
+      "!config.json",
+      "!frog_accounts.json",
+      "!LICENSE",
+      "!README.md",
+      "!.gitignore",
+      "!.git{/*}"
+    ]
+  }
+}
